@@ -1,0 +1,31 @@
+[package]
+name = "aprox"
+version = "0.1.0-devel"
+edition = "2021"
+authors = ["Peter Jin"]
+license = "MIT OR Apache-2.0"
+
+[profile.dev]
+#opt-level = 0
+opt-level = 1
+debug = true
+overflow-checks = true
+panic = "abort"
+codegen-units = 256
+incremental = true
+lto = false
+
+[profile.release]
+opt-level = 3
+debug = true
+overflow-checks = true
+panic = "abort"
+codegen-units = 1
+incremental = false
+lto = false
+
+[dependencies]
+half = { path = "../half" }
+mlx_ffi = { path = "../mlx_ffi" }
+once_cell = { path = "../once_cell" }
+smol_str = { path = "../smol_str", default-features = false }
